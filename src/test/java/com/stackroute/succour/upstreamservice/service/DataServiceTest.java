@@ -1,4 +1,4 @@
-package com.stackroute.succpur.upstreamservice.service;
+package com.stackroute.succour.upstreamservice.service;
 
 import com.google.common.collect.Iterables;
 import com.ibm.common.activitystreams.*;
