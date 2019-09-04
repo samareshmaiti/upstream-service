@@ -15,12 +15,14 @@ import java.io.IOException;
 
 import static com.ibm.common.activitystreams.IO.makeDefaultPrettyPrint;
 import com.stackroute.socketone.controller.*;
+import org.springframework.web.bind.annotation.RestController;
 
 //import com.stackroute.succour.newsapiadapter.exceptions.EmptyAPIQueryURIException;
 //import com.stackroute.succour.newsapiadapter.exceptions.EmptyQueryParamsException;
 
 
-@Service
+//@Service
+@RestController
 public class DataService {
     private static NewsAPIAdapter newsAPIAdapter;
 private static Tweets tweets;
@@ -66,8 +68,9 @@ private static Tweets tweets;
     @Scheduled(fixedDelay = 2000)
     public static Tweets getActivity1() throws Exception {
 
-       tweets.getTweets().subscribe(tweets-> System.out.println(tweets));
-     // tweets.met(8091);
+//      tweets.getTweets().subscribe(tweets-> System.out.println(tweets));
+//      tweets.met(8091);
+       tweets.schedule();
 
         return tweets;
     }

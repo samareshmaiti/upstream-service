@@ -1,12 +1,13 @@
 package com.stackroute.succour.upstreamservice;
 
+import com.stackroute.succour.upstreamservice.config.KafkaSender;
 import com.stackroute.succour.upstreamservice.service.DataService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@Import(DataService.class)
+
 
 @EnableScheduling
 @SpringBootApplication

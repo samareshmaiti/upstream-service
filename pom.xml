@@ -67,6 +67,17 @@
             <version>2.10.3</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.ibm.common</groupId>
             <artifactId>activitystreams-ext</artifactId>
             <version>0.0.1-SNAPSHOT</version>
@@ -101,6 +112,14 @@
             <version>2.3</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.stackroute</groupId>
             <artifactId>socketone</artifactId>
