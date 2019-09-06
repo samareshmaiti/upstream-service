@@ -1,7 +1,6 @@
 package com.stackroute.succour.upstreamservice.domain;
 
 
-
 import lombok.*;
 @Data
 @NoArgsConstructor
@@ -9,9 +8,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class ActivityData {
-    private String verb;
-    private String actor;
-    private Object Objects;
+public class Objects {
+private Object ObjNewsAPI;
+//private Object ObjTwitterAPI;
+
+
 
 }
