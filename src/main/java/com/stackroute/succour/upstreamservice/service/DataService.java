@@ -26,9 +26,10 @@ import static com.ibm.common.activitystreams.IO.makeDefaultPrettyPrint;
 
 public class DataService {
     private ActivityData activityData;
-    @Autowired
     private ObjNewsAPI objNewsAPI;
-    private ObjTwitterAPI objTwitterAPI;
+//    @Autowired
+
+ //   private ObjTwitterAPI objTwitterAPI;
 
 
     Objects objects = new Objects();
@@ -79,8 +80,12 @@ tweets.getTweets();
             objNewsAPI.setObjectType(newsAPIAdapter.getArticleSubject().toString());
             System.out.println(objNewsAPI.toString());
 
-            objects.setObjNewsAPI(objNewsAPI);
-            activityData.setObjects(objects);
+            objects.setObjNewsAPI(objNewsAPI.toString());
+            System.out.println(objects);
+            activityData.setObjects(objects.toString());
+            activityData.setActor("NewsApi");
+            activityData.setVerb("Fetched");
+            System.out.println("hey"+activityData);
 
 
         });

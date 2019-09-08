@@ -12,6 +12,6 @@ import lombok.*;
 public class ActivityData {
     private String verb;
     private String actor;
-    private Object Objects;
+    private String Objects;
 
 }

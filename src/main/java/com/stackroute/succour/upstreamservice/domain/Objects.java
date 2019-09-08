@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @ToString
 public class Objects {
-private Object ObjNewsAPI;
+private String ObjNewsAPI;
 //private Object ObjTwitterAPI;
 
 

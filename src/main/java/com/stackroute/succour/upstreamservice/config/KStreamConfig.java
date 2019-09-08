@@ -9,42 +9,47 @@ import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.kstream.Consumed;
-import org.apache.kafka.streams.kstream.KStream;
-
+import org.apache.kafka.streams.kstream.*;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.annotation.EnableKafka;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
+@Configuration
+@EnableKafka
 public class KStreamConfig {
-    Properties props = new Properties();
+    public static void main(String[] args) throws Exception{
+
+        Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount-application");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "0.0.0.0:9092");
-    Map<String, Object> serdeProps = new HashMap<>();
+        Map<String, Object> serdeProps = new HashMap<>();
 
 
-    final Serializer<ActivityData> KafkaRunApplicationSerialzer = new JsonPOJOSerializer<>();
+        final Serializer<ActivityData> KafkaRunApplicationSerialzer = new JsonPOJOSerializer<>();
         serdeProps.put("JsonPOJOClass", ActivityData.class);
         KafkaRunApplicationSerialzer.configure(serdeProps, false);
 
 
-    final Deserializer<ActivityData> KafkaRunDeserializer = new JsonPOJODeserializer<>();
+        final Deserializer<ActivityData> KafkaRunDeserializer = new JsonPOJODeserializer<>();
         serdeProps.put("JsonPOJOClass", ActivityData.class);
         KafkaRunDeserializer.configure(serdeProps, false);
 
-    //        final Serdes<> KafkaRunApplicationSerDes = ;
-    final Serde<ActivityData> KafkaRunApplicationSerdes = Serdes.serdeFrom(KafkaRunApplicationSerialzer, KafkaRunDeserializer);
+//        final Serdes<> KafkaRunApplicationSerDes = ;
+        final Serde<ActivityData> KafkaRunApplicationSerdes = Serdes.serdeFrom(KafkaRunApplicationSerialzer, KafkaRunDeserializer);
 
-    StreamsBuilder builder = new StreamsBuilder();
+        StreamsBuilder builder = new StreamsBuilder();
 
-    KStream<String, ActivityData> textLines = builder.stream("TextLinesTopic", Consumed.with(Serdes.String(), KafkaRunApplicationSerdes));
+        KStream<String, ActivityData> textLines = builder.stream("TextLinesTopic", Consumed.with(Serdes.String(), KafkaRunApplicationSerdes));
         textLines.map((i, j) -> {
-        System.out.println(i);
-        System.out.println(j);
-        return KeyValue.pair(i, j);
-    };
-    KafkaStreams streams = new KafkaStreams(builder.build(), props);
-       streams.start();
+            System.out.println("hello"+i);
+            System.out.println(j);
+            return KeyValue.pair(i, j);
+        });
+        KafkaStreams streams = new KafkaStreams(builder.build(), props);
+        streams.start();
+    }
 }
-}
+
+
 
